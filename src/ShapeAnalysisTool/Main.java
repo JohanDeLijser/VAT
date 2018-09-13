@@ -21,6 +21,6 @@ public class Main {
 
         int Number = Calculations.contentOfSquare(width, length, height);
 
-	    System.out.print("De inhoud van de kubus is: " + Number);
+	    System.out.print("De inhoud van de kubus is 2: " + Number);
     }
 }
