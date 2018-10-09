@@ -1,3 +1,5 @@
+package ShapeAnalysisTool;
+
 public class Rectangle extends Shape {
     private final double width, length;
 

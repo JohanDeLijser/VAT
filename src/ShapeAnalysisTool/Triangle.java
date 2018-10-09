@@ -1,3 +1,5 @@
+package ShapeAnalysisTool;
+
 public class Triangle extends Shape {
     private final double a, b, c;
 

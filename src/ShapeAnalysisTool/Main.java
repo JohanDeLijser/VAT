@@ -1,26 +1,36 @@
 package ShapeAnalysisTool;
 
-import java.util.Scanner;
+import javafx.application.Application;
+import javafx.geometry.Insets;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
+import javafx.scene.layout.GridPane;
+import javafx.stage.Stage;
 
-public class Main {
+public class Main extends Application {
+
+    Stage window;
 
     public static void main(String[] args) {
-        Scanner reader = new Scanner(System.in);
+        launch(args);
+    }
 
-        System.out.print("Wat is de breedte?");
+    public void start(Stage primaryStage) throws Exception {
+        window = primaryStage;
 
-        int width = Integer.parseInt(reader.nextLine());
+        ViewFunctions viewFunctions = new ViewFunctions();
 
-        System.out.print("Wat is de lengte?");
+        Label mainCalculateCylinderLabel = new Label("Calculate cylinder: ");
+        viewFunctions.addElementToView(mainCalculateCylinderLabel, 0, 0);
 
-        int length = Integer.parseInt(reader.nextLine());
+        Button mainCalculateCylinderButton = new Button("Calculate");
+        viewFunctions.addElementToView(mainCalculateCylinderButton, 0, 1);
 
-        System.out.print("Wat is de hoogte?");
+        System.out.print(viewFunctions.getGrid().getChildren());
 
-        int height = Integer.parseInt(reader.nextLine());
-
-        int Number = Calculations.contentOfSquare(width, length, height);
-
-	    System.out.print("De inhoud van de kubus is: " + Number);
+        window.setScene(viewFunctions.setNewScene());
+        window.show();
     }
 }
