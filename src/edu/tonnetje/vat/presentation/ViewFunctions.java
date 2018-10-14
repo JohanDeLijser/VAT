@@ -1,4 +1,6 @@
-package ShapeAnalysisTool;
+package edu.tonnetje.vat.presentation;
+
+import edu.tonnetje.vat.main.Main;
 
 import javafx.geometry.Insets;
 import javafx.scene.Node;

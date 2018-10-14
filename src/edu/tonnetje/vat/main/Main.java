@@ -1,4 +1,6 @@
-package ShapeAnalysisTool;
+package edu.tonnetje.vat.main;
+
+import edu.tonnetje.vat.presentation.ViewFunctions;
 
 import javafx.application.Application;
 import javafx.geometry.Insets;
