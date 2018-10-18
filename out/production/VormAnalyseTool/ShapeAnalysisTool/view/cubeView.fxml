@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+
+<VBox spacing="10" alignment="TOP_LEFT" prefWidth="500" prefHeight="500" fx:controller="ShapeAnalysisTool.controller.CubeController" xmlns:fx="http://javafx.com/fxml">
+    <fx:define>
+        <Font fx:id="FONT" size="18" />
+        <ToggleGroup fx:id="shapeRadioButtons"/>
+    </fx:define>
+
+    <VBox spacing="10" alignment="TOP_LEFT">
+        <Button fx:id="backButton" text="Back" onAction="#goBack" />
+        <Label>Cubeview</Label>
+
+        <Label>Length of the cube</Label>
+        <TextField fx:id="lengthField" promptText="length" />
+        <Label>Width of the cube</Label>
+        <TextField fx:id="widthField"  promptText="width" />
+        <Label>Height of the cube</Label>
+        <TextField fx:id="heightField"  promptText="height" />
+
+        <Button fx:id="calculateButton" text="Calculate" onAction="#calculateCube" />
+    </VBox>
+
+    <VBox>
+        <Label>Volume of the cube: </Label>
+        <TextField fx:id="result"/>
+    </VBox>
+
+</VBox>

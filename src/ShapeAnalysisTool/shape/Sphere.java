@@ -1,4 +1,4 @@
-package ShapeAnalysisTool;
+package ShapeAnalysisTool.shape;
 
 public class Sphere {
 

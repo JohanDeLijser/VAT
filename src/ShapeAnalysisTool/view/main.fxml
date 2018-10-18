@@ -12,7 +12,7 @@
 <?import javafx.scene.text.*?>
 <?import javafx.scene.paint.Color?>
 
-<VBox spacing="10" alignment="TOP_LEFT" prefWidth="500" prefHeight="500" fx:controller="ShapeAnalysisTool.controller.Controller" xmlns:fx="http://javafx.com/fxml">
+<VBox spacing="10" alignment="TOP_LEFT" prefWidth="500" prefHeight="500" fx:controller="ShapeAnalysisTool.controller.MainController" xmlns:fx="http://javafx.com/fxml">
     <fx:define>
         <Font fx:id="FONT" size="18" />
         <ToggleGroup fx:id="shapeRadioButtons"/>
@@ -25,7 +25,7 @@
         <RadioButton text="Cylinder" toggleGroup="$shapeRadioButtons" fx:id="cylinderRadio"/>
         <RadioButton text="Sphere" toggleGroup="$shapeRadioButtons" fx:id="sphereRadio"/>
 
-        <Button fx:id="openCalculateButton" text="Calculate" />
+        <Button fx:id="openCalculateButton" text="Calculate" onAction="#handleClick" />
     </VBox>
 
 </VBox>

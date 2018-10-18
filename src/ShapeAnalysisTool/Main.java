@@ -13,9 +13,6 @@ public class Main extends Application {
 
     private Stage window;
 
-    @FXML
-    private Button openCalculateButton;
-
     @Override
     public void start(Stage primaryStage) throws Exception {
         this.window = primaryStage;
@@ -23,8 +20,6 @@ public class Main extends Application {
     }
 
     public void setMainView() throws Exception {
-        MainController mainController = new MainController();
-        openCalculateButton.setOnAction(mainController::handleClick);
         Parent mainSceneFxml = FXMLLoader.load(getClass().getResource("view/main.fxml"));
         Scene newScene = new Scene(mainSceneFxml);
         window.setScene(newScene);

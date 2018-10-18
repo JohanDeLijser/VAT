@@ -1,18 +1,7 @@
 package ShapeAnalysisTool.controller;
 
-import javafx.application.Application;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.control.RadioButton;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
-import javafx.stage.Stage;
-
-import java.awt.*;
-
 
 
 public class MainController {
@@ -25,16 +14,25 @@ public class MainController {
     private RadioButton sphereRadio;
 
 
-    public MainController() {
-
-    }
-
-    public void handleClick(ActionEvent event) {
+    public void handleClick() {
+        RadioButton selectedRadio = new RadioButton();
+        String selectedRadioString = "";
 
         if (cubeRadio.isSelected()) {
+            selectedRadio = cubeRadio;
+            selectedRadioString = "cube";
+        } else if (cylinderRadio.isSelected()) {
+            selectedRadio = cylinderRadio;
+            selectedRadioString = "cylinder";
+        } else if (sphereRadio.isSelected()) {
+            selectedRadio = sphereRadio;
+            selectedRadioString = "sphere";
+        }
+
+        if (selectedRadio != null && !selectedRadioString.equals("")) {
             try {
-                CylinderController cylinderController = new CylinderController();
-                cylinderController.setCylinderView();
+                ViewController viewController = new ViewController();
+                viewController.setCalculateView(selectedRadio, selectedRadioString);
             } catch (Exception e) {
                 System.out.println("Failed");
             }

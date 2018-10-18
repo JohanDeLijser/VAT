@@ -1,27 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.net.*?>
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.beans.property.*?>
-<?import javafx.geometry.*?>
-<?import javafx.scene.shape.*?>
+
 <?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
-<?import javafx.scene.paint.Color?>
 
-<VBox spacing="10" alignment="TOP_LEFT" prefWidth="500" prefHeight="500" fx:controller="ShapeAnalysisTool.controller.Controller" xmlns:fx="http://javafx.com/fxml">
+<VBox spacing="10" alignment="TOP_LEFT" prefWidth="500" prefHeight="500" fx:controller="ShapeAnalysisTool.controller.CylinderController" xmlns:fx="http://javafx.com/fxml">
     <fx:define>
         <Font fx:id="FONT" size="18" />
         <ToggleGroup fx:id="shapeRadioButtons"/>
     </fx:define>
 
     <VBox spacing="10" alignment="TOP_LEFT">
-        <Label>This is a different view</Label>
+        <Button fx:id="backButton" text="Back" onAction="#goBack" />
+        <Label>Cylinderview</Label>
+
+        <Label>Radius of the cylinder:</Label>
+        <TextField fx:id="radiusField" promptText="radius" />
+        <Label>Height of the cylinder:</Label>
+        <TextField fx:id="heightField"  promptText="height" />
 
         <Button fx:id="calculateButton" text="Calculate" onAction="#calculateCylinder" />
+    </VBox>
+
+    <VBox>
+        <Label>Volume of the cylinder: </Label>
+        <TextField fx:id="result"/>
     </VBox>
 
 </VBox>

@@ -1,17 +1,19 @@
 package ShapeAnalysisTool.controller;
 
-import ShapeAnalysisTool.shape.Cylinder;
+import ShapeAnalysisTool.shape.Cube;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 
-public class CylinderController {
+public class CubeController {
 
     @FXML
     private Button backButton;
 
     @FXML
-    private TextField radiusField;
+    private TextField lengthField;
+    @FXML
+    private TextField widthField;
     @FXML
     private TextField heightField;
 
@@ -30,14 +32,15 @@ public class CylinderController {
     }
 
     @FXML
-    public void calculateCylinder() {
-        if (!radiusField.getText().equals("") &&  !heightField.getText().equals("")) {
-            Double radius = Double.parseDouble(radiusField.getText());
+    public void calculateCube() {
+        if (!lengthField.getText().equals("") && !widthField.getText().equals("") && !heightField.getText().equals("")) {
+            Double length = Double.parseDouble(lengthField.getText());
+            Double width = Double.parseDouble(widthField.getText());
             Double height = Double.parseDouble(heightField.getText());
 
-            Cylinder cylinder = new Cylinder(radius, height);
+            Cube cube = new Cube(length, width, height);
 
-            result.setText(Double.toString(cylinder.getVolume()));
+            result.setText(Double.toString(cube.getVolume()));
         }
     }
 }
