@@ -1,0 +1,28 @@
+VBox#mainBox {
+    -fx-padding: 15px;
+}
+
+VBox#calculateBox {
+    -fx-padding: 15px 0;
+}
+
+Text {
+    -fx-padding: 0 0 10px 0;
+    -fx-font-size: 20px;
+}
+
+Label {
+    -fx-padding: 10px 0 5px 0;
+}
+
+Text#notice {
+    -fx-font-size: 16px;
+}
+
+Text.successNotice {
+    -fx-stroke: green;
+}
+
+Text.failNotice {
+    -fx-stroke: red;
+}

@@ -12,6 +12,18 @@ public class Cube {
         this.height = height;
     }
 
+    public double getLength() {
+        return length;
+    }
+
+    public double getWidth() {
+        return width;
+    }
+
+    public double getHeight() {
+        return height;
+    }
+
     public double getVolume() {
         return this.length * this.width * this.height;
     }

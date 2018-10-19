@@ -8,6 +8,10 @@ public class Sphere {
         this.radius = radius;
     }
 
+    public double getRadius() {
+        return radius;
+    }
+
     public double getVolume() {
         return (4 / 3) * Math.PI * (this.radius * this.radius);
     }

@@ -12,14 +12,18 @@
 <?import javafx.scene.text.*?>
 <?import javafx.scene.paint.Color?>
 
-<VBox spacing="10" alignment="TOP_LEFT" prefWidth="500" prefHeight="500" fx:controller="ShapeAnalysisTool.controller.MainController" xmlns:fx="http://javafx.com/fxml">
+<VBox fx:id="mainBox" spacing="10" alignment="TOP_LEFT" prefWidth="800" prefHeight="600" fx:controller="ShapeAnalysisTool.controller.MainController" xmlns:fx="http://javafx.com/fxml" stylesheets="@ShapeAnalysisTool/../../style.css">
     <fx:define>
         <Font fx:id="FONT" size="18" />
         <ToggleGroup fx:id="shapeRadioButtons"/>
     </fx:define>
 
+    <HBox fx:id="actionBox">
+        <Button fx:id="loadButton" text="Load" onAction="#loadView" />
+    </HBox>
+
     <VBox spacing="10" alignment="TOP_LEFT">
-        <Label>What do you want to calculate?</Label>
+        <Text>What do you want to calculate?</Text>
 
         <RadioButton text="Cube" toggleGroup="$shapeRadioButtons" fx:id="cubeRadio"/>
         <RadioButton text="Cylinder" toggleGroup="$shapeRadioButtons" fx:id="cylinderRadio"/>

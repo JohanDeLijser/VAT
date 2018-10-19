@@ -1,6 +1,7 @@
 package ShapeAnalysisTool;
 
 import ShapeAnalysisTool.controller.MainController;
+import ShapeAnalysisTool.model.Model;
 import javafx.application.Application;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -11,6 +12,8 @@ import javafx.stage.Stage;
 
 public class Main extends Application {
 
+    public static Model model = new Model();
+
     private Stage window;
 
     @Override
@@ -19,6 +22,10 @@ public class Main extends Application {
         setMainView();
     }
 
+    /**
+     * Sets the main view when program is started
+     * @throws Exception
+     */
     public void setMainView() throws Exception {
         Parent mainSceneFxml = FXMLLoader.load(getClass().getResource("view/main.fxml"));
         Scene newScene = new Scene(mainSceneFxml);

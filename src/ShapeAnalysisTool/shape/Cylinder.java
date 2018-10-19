@@ -10,6 +10,14 @@ public class Cylinder {
         this.height = height;
     }
 
+    public double getRadius() {
+        return radius;
+    }
+
+    public double getHeight() {
+        return height;
+    }
+
     public double getVolume() {
         return  Math.PI * (this.radius * this.radius) * this.height;
     }
