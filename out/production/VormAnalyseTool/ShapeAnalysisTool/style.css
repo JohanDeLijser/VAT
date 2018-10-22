@@ -6,6 +6,15 @@ VBox#calculateBox {
     -fx-padding: 15px 0;
 }
 
+VBox#loadBox {
+    -fx-padding: 0 20px;
+}
+
+Text.typeString {
+    -fx-font-weight: 100;
+    -fx-stroke: grey;
+}
+
 Text {
     -fx-padding: 0 0 10px 0;
     -fx-font-size: 20px;

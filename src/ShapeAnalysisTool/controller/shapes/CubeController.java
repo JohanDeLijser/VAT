@@ -39,6 +39,9 @@ public class CubeController {
 
     private Cube cube;
 
+    @FXML
+    private Button saveButton;
+
     /**
      * Function is triggered when back button is clicked. Sets back view through viewfunction
      */
@@ -70,6 +73,8 @@ public class CubeController {
             result.setText(Double.toString(cube.getVolume()));
 
             notice.setText("");
+
+            saveButton.setVisible(true);
         }
     }
 
@@ -80,6 +85,7 @@ public class CubeController {
             notice.setText("Successfully saved!");
             notice.getStyleClass().clear();
             notice.getStyleClass().add("successNotice");
+            saveButton.setVisible(false);
         } else {
             notice.setText("No calculation done, nothing to save...");
             notice.getStyleClass().clear();

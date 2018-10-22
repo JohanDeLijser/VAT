@@ -1,6 +1,7 @@
 package ShapeAnalysisTool.model;
 
 import java.sql.*;
+import java.util.ArrayList;
 
 public class DatabaseConnection {
     /*
@@ -27,8 +28,7 @@ public class DatabaseConnection {
         if (connection == null) {
             try {
                 // Try to create a connection with the library database
-                connection = DriverManager.getConnection(
-                        "jdbc:mysql://localhost/vat", "root", "");
+                connection = DriverManager.getConnection("jdbc:mysql://localhost/vat?useSSL=false", "root", "");
 
                 if (connection != null) {
                     statement = connection.createStatement();
@@ -47,75 +47,78 @@ public class DatabaseConnection {
         return result;
     }
 
-    public boolean connectionIsOpen() {
-        boolean open = false;
+    /**
+     * Get shape type
+     * @param typeDouble
+     * @return
+     * @throws SQLException
+     */
+    public String selectShapeType(Double typeDouble) throws SQLException {
+        int type = typeDouble.intValue();
+        String selectQuery = "SELECT * FROM shapes WHERE ID = " + type ;
+        String resultString = "";
 
-        if (connection != null && statement != null) {
-            try {
-                open = !connection.isClosed() && !statement.isClosed();
-            } catch (SQLException e) {
-                System.out.println(e);
-                open = false;
-            }
-        }
-        // Else, at least one the connection or statement fields is null, so
-        // no valid connection.
+        statement = connection.createStatement();
+        ResultSet result;
+        result = statement.executeQuery(selectQuery);
 
-        return open;
-    }
-
-    public void closeConnection() {
-        try {
-            statement.close();
-
-            // Close the connection
-            connection.close();
-        } catch (Exception e) {
-            System.out.println(e);
-        }
-    }
-
-    public ResultSet executeSQLSelectStatement(String query) {
-        ResultSet resultset = null;
-
-        // First, check whether a some query was passed and the connection with
-        // the database.
-        if (query != null && connectionIsOpen()) {
-            // Then, if succeeded, execute the query.
-            try {
-                resultset = statement.executeQuery(query);
-            } catch (SQLException e) {
-                System.out.println(e);
-                resultset = null;
-            }
+        while (result.next()) {
+            resultString = result.getString("shape");
         }
 
-        return resultset;
+        return resultString;
     }
 
     /**
-     * Dml: data manipulation language
-     * @param query The SQL query that will be executed
-     * @return true if execution of the SQL statement was successful, false
-     * otherwise.
+     * Select all shape dimensions and return them in an ArrayList
+     * @return
+     * @throws SQLException
      */
-    public boolean executeSqlDmlStatement(String query) {
-        boolean result = false;
+    public ArrayList<ArrayList<Double>> selectAllDimensions() throws SQLException {
 
-        // First, check whether a some query was passed and the connection with
-        // the database.
-        if (query != null && connectionIsOpen()) {
-            // Then, if succeeded, execute the query.
-            try {
-                statement.executeUpdate(query);
-                result = true;
-            } catch (SQLException e) {
-                System.out.println(e);
-                result = false;
-            }
+        String selectQuery = "SELECT * FROM dimensions " ;
+        ArrayList<ArrayList<Double>> shapes = new ArrayList<>();
+
+
+        statement = connection.createStatement();
+        ResultSet result;
+        result = statement.executeQuery(selectQuery);
+
+        while (result.next()) {
+            ArrayList<Double> shapeDimensions = new ArrayList<>();
+            Double type = result.getDouble("type");
+            shapeDimensions.add(type);
+            Double length = result.getDouble("length");
+            shapeDimensions.add(length);
+            Double width = result.getDouble("width");
+            shapeDimensions.add(width);
+            Double radius = result.getDouble("radius");
+            shapeDimensions.add(radius);
+            Double height = result.getDouble("height");
+            shapeDimensions.add(height);
+            Double volume = result.getDouble("volume");
+            shapeDimensions.add(volume);
+
+            shapes.add(shapeDimensions);
         }
 
-        return result;
+        return shapes;
+    }
+
+    public void insertCube(Double length, Double width, Double height, Double volume) throws SQLException {
+        String insertQuery = "INSERT INTO dimensions (type, length, width, height, volume) VALUES (1, " + length + ", " + width + ", " + height + ", " + volume + ");";
+        System.out.println(insertQuery);
+        statement.executeUpdate(insertQuery);
+    }
+
+    public void insertCylinder(Double height, Double radius, Double volume) throws SQLException {
+        String insertQuery = "INSERT INTO dimensions(type, height, radius, volume) VALUES (2, " + height + ", " + radius + ", " + volume + ");";
+        statement.executeUpdate(insertQuery);
+    }
+
+    public void insertSphere(Double radius, Double volume) throws SQLException {
+        String insertQuery = "INSERT INTO dimensions (type, radius, volume) VALUES (3, " + radius + ", " + volume + ");";
+        statement.executeUpdate(insertQuery);
     }
 }
 

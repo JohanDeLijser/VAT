@@ -1,6 +1,7 @@
 package ShapeAnalysisTool;
 
 import ShapeAnalysisTool.controller.MainController;
+import ShapeAnalysisTool.model.DatabaseConnection;
 import ShapeAnalysisTool.model.Model;
 import javafx.application.Application;
 import javafx.fxml.FXML;
@@ -13,6 +14,7 @@ import javafx.stage.Stage;
 public class Main extends Application {
 
     public static Model model = new Model();
+    public static DatabaseConnection databaseConnection = new DatabaseConnection();
 
     private Stage window;
 
@@ -34,6 +36,7 @@ public class Main extends Application {
     }
 
     public static void main(String[] args) {
+        databaseConnection.openConnection();
         launch(args);
     }
 }

@@ -28,6 +28,9 @@ public class SphereController {
 
     private Sphere sphere;
 
+    @FXML
+    private Button saveButton;
+
     /**
      * Function is triggered when back button is clicked. Sets back view through viewfunction
      */
@@ -57,6 +60,8 @@ public class SphereController {
             result.setText(Double.toString(sphere.getVolume()));
 
             notice.setText("");
+
+            saveButton.setVisible(true);
         }
     }
 
@@ -67,6 +72,7 @@ public class SphereController {
             notice.setText("Successfully saved!");
             notice.getStyleClass().clear();
             notice.getStyleClass().add("successNotice");
+            saveButton.setVisible(false);
         } else {
             notice.setText("No calculation done, nothing to save...");
             notice.getStyleClass().clear();

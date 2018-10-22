@@ -14,9 +14,11 @@
         <Button fx:id="backButton" text="Back" onAction="#goBack" />
     </HBox>
 
-    <VBox spacing="10" alignment="TOP_LEFT">
-        <Text>Load view</Text>
-
+    <VBox fx:id="loadBox" spacing="10" alignment="TOP_LEFT">
+        <Text>Load shapes</Text>
+        <Button fx:id="loadSavedShapes" text="Load saved shapes" onAction="#displayLoadedShapes"/>
+        <FlowPane fx:id="loadResultPane" minWidth="560" minHeight="50">
+        </FlowPane>
     </VBox>
 
 </VBox>

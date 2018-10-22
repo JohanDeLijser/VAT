@@ -35,6 +35,9 @@ public class CylinderController {
 
     private Cylinder cylinder;
 
+    @FXML
+    private Button saveButton;
+
     /**
      * Function is triggered when back button is clicked. Sets back view through viewfunction
      */
@@ -65,6 +68,8 @@ public class CylinderController {
             result.setText(Double.toString(cylinder.getVolume()));
 
             notice.setText("");
+
+            saveButton.setVisible(true);
         }
     }
 
@@ -75,6 +80,7 @@ public class CylinderController {
             notice.setText("Successfully saved!");
             notice.getStyleClass().clear();
             notice.getStyleClass().add("successNotice");
+            saveButton.setVisible(false);
         } else {
             notice.setText("No calculation done, nothing to save...");
             notice.getStyleClass().clear();
