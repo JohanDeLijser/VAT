@@ -4,7 +4,6 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-
 <VBox fx:id="mainBox" spacing="10" alignment="TOP_LEFT" prefWidth="800" prefHeight="600" fx:controller="ShapeAnalysisTool.controller.LoadController" xmlns:fx="http://javafx.com/fxml" stylesheets="@ShapeAnalysisTool/../../style.css">
     <fx:define>
         <Font fx:id="FONT" size="18" />

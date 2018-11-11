@@ -3,7 +3,6 @@ package ShapeAnalysisTool.controller;
 import ShapeAnalysisTool.Main;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.text.Text;
 
@@ -25,15 +24,22 @@ public class LoadController {
 
     private ArrayList<ArrayList<Double>> shapes;
 
+    /**
+     * Constructor
+     */
     public LoadController() {
 
         try {
-            shapes = Main.databaseConnection.selectAllDimensions();
+            shapes = Main.model.selectAllDimensions();
         } catch (SQLException e) {
             System.out.print("Failed to load shapes");
         }
     }
 
+
+    /**
+     * Triggered when go back button is clicked
+     */
     @FXML
     public void goBack() {
 
@@ -45,6 +51,9 @@ public class LoadController {
         }
     }
 
+    /**
+     * Load all saved shapes and display them
+     */
     public void displayLoadedShapes() {
         loadSavedShapes.setVisible(false);
 
@@ -58,7 +67,7 @@ public class LoadController {
             Double volume = Double.parseDouble(shape.get(5).toString());
 
             try {
-                type = Main.databaseConnection.selectShapeType(typeDouble);
+                type = Main.model.selectShapeType(typeDouble);
             } catch (SQLException e) {
                 System.out.println("Failed to get type or type doesn't exist");
             }
@@ -73,6 +82,14 @@ public class LoadController {
         }
     }
 
+    /**
+     * Display cube object
+     * @param type
+     * @param length
+     * @param width
+     * @param height
+     * @param volume
+     */
     public void displayCube(String type, Double length, Double width, Double height, Double volume) {
         Text typeResult = new Text(type + " with dimensions:");
         typeResult.getStyleClass().add("typeString");
@@ -80,6 +97,13 @@ public class LoadController {
         loadResultPane.getChildren().addAll(typeResult, result);
     }
 
+    /**
+     * Display cylinder object
+     * @param type
+     * @param radius
+     * @param height
+     * @param volume
+     */
     public void displayCylinder(String type, Double radius, Double height, Double volume) {
         Text typeResult = new Text(type + " with dimensions:");
         typeResult.getStyleClass().add("typeString");
@@ -87,6 +111,12 @@ public class LoadController {
         loadResultPane.getChildren().addAll(typeResult, result);
     }
 
+    /**
+     * Display sphere object
+     * @param type
+     * @param radius
+     * @param volume
+     */
     public void displaySphere(String type, Double radius, Double volume) {
         Text typeResult = new Text(type + " with dimensions:");
         typeResult.getStyleClass().add("typeString");

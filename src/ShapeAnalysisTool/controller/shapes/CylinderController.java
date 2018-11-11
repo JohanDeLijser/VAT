@@ -2,12 +2,13 @@ package ShapeAnalysisTool.controller.shapes;
 
 import ShapeAnalysisTool.Main;
 import ShapeAnalysisTool.controller.ViewController;
-import ShapeAnalysisTool.model.Model;
 import ShapeAnalysisTool.shape.Cylinder;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
+
+import java.sql.SQLException;
 
 /**
  * Class that handles the cylinder calculation view
@@ -73,14 +74,26 @@ public class CylinderController {
         }
     }
 
+    /**
+     * Save current shape to database
+     */
     public void saveCurrentShape() {
 
         if (resultDouble != null) {
-            Main.model.addCylinderToStorage(cylinder);
-            notice.setText("Successfully saved!");
-            notice.getStyleClass().clear();
-            notice.getStyleClass().add("successNotice");
-            saveButton.setVisible(false);
+
+            try {
+                Main.model.insertCylinder(cylinder);
+                notice.setText("Successfully saved!");
+                notice.getStyleClass().clear();
+                notice.getStyleClass().add("successNotice");
+                saveButton.setVisible(false);
+            } catch (SQLException e) {
+                notice.setText("Something went wrong");
+                notice.getStyleClass().clear();
+                notice.getStyleClass().add("failNotice");
+                System.out.println("Failed to insert cylinder into database");
+            }
+
         } else {
             notice.setText("No calculation done, nothing to save...");
             notice.getStyleClass().clear();

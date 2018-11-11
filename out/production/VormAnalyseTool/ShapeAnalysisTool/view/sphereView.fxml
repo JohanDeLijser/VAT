@@ -1,16 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.net.*?>
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.beans.property.*?>
-<?import javafx.geometry.*?>
-<?import javafx.scene.shape.*?>
 <?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
-<?import javafx.scene.paint.Color?>
 
 <VBox fx:id="mainBox" spacing="10" alignment="TOP_LEFT" prefWidth="800" prefHeight="600" fx:controller="ShapeAnalysisTool.controller.shapes.SphereController" xmlns:fx="http://javafx.com/fxml" stylesheets="@ShapeAnalysisTool/../../style.css">
     <fx:define>

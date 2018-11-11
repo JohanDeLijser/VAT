@@ -2,14 +2,13 @@ package ShapeAnalysisTool.controller.shapes;
 
 import ShapeAnalysisTool.Main;
 import ShapeAnalysisTool.controller.ViewController;
-import ShapeAnalysisTool.model.DatabaseConnection;
-import ShapeAnalysisTool.model.Model;
 import ShapeAnalysisTool.shape.Cube;
-import com.sun.org.apache.xpath.internal.operations.Mod;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
+
+import java.sql.SQLException;
 
 /**
  * Class that handles the cube calculation view
@@ -78,14 +77,25 @@ public class CubeController {
         }
     }
 
+    /**
+     * Save current shape to database
+     */
     public void saveCurrentShape() {
 
         if (resultDouble != null) {
-            Main.model.addCubeToStorage(cube);
-            notice.setText("Successfully saved!");
-            notice.getStyleClass().clear();
-            notice.getStyleClass().add("successNotice");
-            saveButton.setVisible(false);
+
+            try {
+                Main.model.insertCube(cube);
+                notice.setText("Successfully saved!");
+                notice.getStyleClass().clear();
+                notice.getStyleClass().add("successNotice");
+                saveButton.setVisible(false);
+            } catch (SQLException e) {
+                notice.setText("Something went wrong");
+                notice.getStyleClass().clear();
+                notice.getStyleClass().add("failNotice");
+                System.out.println("Failed to insert cube into database");
+            }
         } else {
             notice.setText("No calculation done, nothing to save...");
             notice.getStyleClass().clear();

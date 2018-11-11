@@ -8,6 +8,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 
+import java.sql.SQLException;
+
 /**
  * Class that handles the sphere calculation view
  */
@@ -65,14 +67,26 @@ public class SphereController {
         }
     }
 
+    /**
+     * Save current shape to database
+     */
     public void saveCurrentShape() {
 
         if (resultDouble != null) {
-            Main.model.addSphereToStorage(sphere);
-            notice.setText("Successfully saved!");
-            notice.getStyleClass().clear();
-            notice.getStyleClass().add("successNotice");
-            saveButton.setVisible(false);
+
+            try {
+                Main.model.insertSphere(sphere);
+                notice.setText("Successfully saved!");
+                notice.getStyleClass().clear();
+                notice.getStyleClass().add("successNotice");
+                saveButton.setVisible(false);
+            } catch (SQLException e) {
+                notice.setText("Something went wrong");
+                notice.getStyleClass().clear();
+                notice.getStyleClass().add("failNotice");
+                System.out.println("Failed to insert sphere into database");
+            }
+
         } else {
             notice.setText("No calculation done, nothing to save...");
             notice.getStyleClass().clear();
